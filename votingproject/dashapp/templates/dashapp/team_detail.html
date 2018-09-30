@@ -1,0 +1,49 @@
+{% extends 'dashapp/dashboard.html' %}
+{% block content %}
+<div class="row">
+    
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="row placeholders">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                                {% load staticfiles %}
+                                <img class="img-thumbnail md-margin-bottom-10" src="{% static 'dashapp/img/ivos.jpg' %}" alt="">  
+                        <h3>{{ team.team_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="col-sm-8 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2>{{ team.team_project }}</h2>
+                        <hr>
+                <p>{{ team.bio }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <h1 class="page-header">Members</h1>
+        <div class="row placeholders">
+                {% for member in team.members_set.all %}
+                    <div class="col-sm-100 col-md-2">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                        {% load staticfiles %}
+                                        <img class="img-thumbnail md-margin-bottom-10" src="{% static 'dashapp/img/ivos.jpg' %}" alt="">  
+                                <h5>{{ member.fName }} {{ member.lName }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+        <div class="col-sm-offset-10 col-sm-1"><a href="{% url 'dashapp:add_member' team.id %}"><input type="submit" value="Add Member" class="btn btn-lg btn-danger"></a></div>
+</div>
+
+{% endblock %}

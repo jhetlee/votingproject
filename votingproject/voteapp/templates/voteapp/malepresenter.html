@@ -1,0 +1,20 @@
+{% extends 'voteapp/voting.html' %}
+{% block content %}
+    <h2 class="sub-header">Teams</h2>
+        <div class="row">
+            <div class="row placeholders">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for male in all_males %}
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        {% load staticfiles %}
+                        <img src="{% static 'dashapp/img/ivos.jpg' %}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                        <h4>{{ male.fName }} {{ male.lName }}</h4>
+                        <span class="text-muted">{{ male.team }}</span>
+                        <input type="submit" id="male" name="male" value="{{ male.id }}" >
+                     </div>
+                    {% endfor %}
+                </form>
+            </div>
+             </div>
+{% endblock %}

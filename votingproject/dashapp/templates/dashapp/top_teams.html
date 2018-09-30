@@ -1,0 +1,20 @@
+{% extends 'dashapp/dashboard.html' %}
+{% block content %}
+    <h2 class="sub-header">Teams</h2>
+        <div class="row">
+            <div class="row placeholders">
+                {% for team in top_teams %}
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        {% load staticfiles %}
+                        <a href="{% url 'dashapp:team_details' team.id %}">
+                        <img src="{% static 'dashapp/img/ivos.jpg' %}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                        </a>
+                        <h4>{{ team.team_name }}</h4>
+                        <span class="text-muted">Votes: {{team.vote_count}}</span>
+                        </div>
+                {% endfor %}
+            </div>
+        
+            <div class="col-sm-offset-10 col-sm-1"><a href="{% url 'dashapp:create_team' %}"><input type="submit" value="Add Team" class="btn btn-lg btn-danger"></a></div>
+        </div>
+{% endblock %}

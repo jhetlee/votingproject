@@ -1,0 +1,16 @@
+{% extends 'dashapp/dashboard.html' %}
+{% block content %}
+    <h2 class="sub-header">Teams</h2>
+        <div class="row">
+            <div class="row placeholders">
+                {% for female in top_females %}
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        {% load staticfiles %}
+                        <img src="{% static 'dashapp/img/ivos.jpg' %}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                        <h4>{{ female.fName }} {{ female.lName }}</h4>
+                        <span class="text-muted">{{ female.vote_count }}</span>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
